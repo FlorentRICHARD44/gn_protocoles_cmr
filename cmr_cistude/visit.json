@@ -1,0 +1,52 @@
+{
+    "search_filters": [{
+        "field":"date",
+        "type": "date"
+    },{
+        "field": "session",
+        "type": "nomenclature"
+    },{
+        "field": "observers",
+        "type": "observers"
+    }, {
+        "field": "dataset",
+        "type": "dataset"
+    }, {
+        "field": "observation",
+        "type": "boolean"
+    }],
+    "display_properties": ["site_name","date","dataset_name","session","observers","observation","nb_observations","comments"],
+    "display_list": [{
+        "field":"date",
+        "width": 120
+    },{
+        "field":"observers",
+        "width": 200
+    },{
+        "field": "session",
+        "width": 120
+    },{
+        "field": "dataset_name",
+        "width": 200
+    },{
+        "field": "observation",
+        "width": 100
+    },{
+        "field": "nb_observations",
+        "width": 120,
+        "align": "right"
+    }],
+    "properties_to_keep_when_chaining": [],
+    "mapping_visit_individual_additional_field": "session",
+    "specific": {
+        "session": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Session",
+            "required": true,
+            "code_nomenclature_type": "CMR_CISTUDE_SESSION",
+            "multi_select": false,
+            "key_value": "label_fr",
+            "help": "Vous pouvez ajouter une session via l'administration des nomenclatures (type \"Session\"), ou bien demander à un administrateur si vous n'avez pas les droits"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "label": "Aire d'étude",
+    "label_plural": "Aires d'étude",
+    "geometry_types": ["Polygon"],
+    "compute_data_from_municipality_area": {
+        "communes": "nom_com",
+        "departement": "insee_dep"
+    },
+    "search_filters": [{
+        "field": "name",
+        "placeholder": "Nom de l'aire d'étude"
+    },{
+        "field": "communes",
+        "placeholder": "Nom de la commune"
+    },{
+        "field": "departement",
+        "placeholder": "N° du département"
+    }],
+    "display_properties": ["name","communes","departement","comments"],
+    "display_list": [{
+        "field":"name",
+        "width": 200
+    },{
+        "field":"communes",
+        "width": 250
+    },{
+        "field":"departement",
+        "width": 100
+    },{
+        "field":"nb_sites",
+        "width": 80,
+        "align": "right"
+    },{
+        "field": "nb_observations",
+        "width": 120,
+        "align": "right"
+    },{
+        "field": "nb_individuals",
+        "width": 100,
+        "align": "right"
+    }],
+    "use_batch_visit_creation": true,
+    "properties_to_keep_when_chaining": [],
+    "specific": {
+        "communes": {
+            "attribut_label": "Commune"
+        },
+        "departement": {
+            "attribut_label": "Département"
+        },
+        "nb_sites": {
+            "attribut_label": "Nb Points"
+        }
+    }
+}

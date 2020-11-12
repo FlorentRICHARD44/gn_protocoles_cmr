@@ -1,0 +1,46 @@
+{
+    "search_filters": [{
+        "field": "identifier",
+        "placeholder": "N° Identifiant"
+    },{
+        "field": "rfid",
+        "placeholder": "N° Puce RFID"
+    },{
+        "field": "sexe",
+        "type": "select",
+        "placeholder": "Sexe de l'invididu"
+    },{
+        "field": "marker",
+        "placeholder": "Marquage de l'individu"
+    }],
+    "display_properties": ["identifier","rfid","sexe","marker","last_visit_date","comments"],
+    "display_list": [{
+        "field":"identifier",
+        "width": 150
+    },{
+        "field": "rfid",
+        "width": 150
+    },{
+        "field": "sexe",
+        "width": 120
+    },{
+        "field": "marker",
+        "width": 150
+    },{
+        "field": "nb_observations",
+        "width": 120,
+        "align": "right"
+    }, {
+        "field": "last_visit_date",
+        "width": 140
+    }],
+    "properties_to_keep_when_chaining": [],
+    "specific": {
+        "sexe": {
+            "type_widget": "select",
+            "attribut_label": "Sexe",
+            "values": ["Mâle","Femelle","Indéterminé"],
+            "required": true
+        }
+    }
+}

@@ -1,0 +1,293 @@
+{
+    "display_properties": ["type","comments","individual_state","developpement_stade","age","particular_signs"],
+    "display_list": [{
+        "field":"individual_identifier",
+        "width": 150
+    },{
+        "field": "type",
+        "width": 250
+    }],
+    "properties_to_keep_when_chaining": [],
+    "individual_histogram_items": [{
+        "field":"poids_g",
+        "color": "rgba(255,0,0,0.5)"
+    },{
+        "field":"longueur_dossiere_mm",
+        "color": "rgba(0,50,255,0.5)"
+    },{
+        "field":"largeur_dossiere_mm",
+        "color": "rgba(50,0,255,0.5)"
+    },{
+        "field":"longueur_plastron_mm",
+        "color": "rgba(0,50,255,0.5)"
+    },{
+        "field":"largeur_avant_plastron_mm",
+        "color": "rgba(50,0,255,0.5)"
+    },{
+        "field":"largeur_arriere_plastron_mm",
+        "color": "rgba(50,0,255,0.5)"
+    }],
+    "generic": {
+        "id_observation": {
+            "type_widget": "text",
+            "attribut_label": "Id Observation",
+            "hidden": true
+        },
+        "type": {
+            "type_widget": "select",
+            "attribut_label": "Type",
+            "required": true,
+            "values": ["Capture-Marquage","Recapture"]
+        },
+        "comments": {
+            "type_widget": "textarea",
+            "attribut_label": "Commentaires",
+            "required": false
+        },
+        "visit_date": {
+            "attribut_label": "Date de Visite",
+            "type_column": "date"
+        },
+        "site_name": {
+            "attribut_label": "Site"
+        },
+        "individual_identifier": {
+            "attribut_label": "Individu"
+        }
+    },
+    "specific": {
+        "individual_state": {
+            "type_widget": "select",
+            "attribut_label": "Etat individu",
+            "required": true,
+            "values": ["Vivant","Mort"]
+        },
+        "etat_femelle": {
+            "attribut_label": "Etat femelle",
+            "type_widget": "select",
+            "values": ["Non Gravide","Gravide"],
+            "required": true
+        },
+        "developpement_stade": {
+            "type_widget": "select",
+            "attribut_label": "Stade de développement",
+            "required": true,
+            "values": ["Emergent de l'année","Juvénile en croissance","Adulte avec stries encore visibles","Vieil adulte sans strie de croissance","Inconnu"]
+        },
+        "aide_developpement_stade":{
+            "type_widget":"html",
+            "html": "<div class=\"mb-3 alert alert-info\"><a data-toggle=\"collapse\" href=\"#help_devstade\" role=\"button\" aria-expanded=\"false\" aria-controls=\"help_devstade\"><i class=\"fa fa-question-circle\"></i>&nbsp;Aide</a><div class=\"collapse\" id=\"help_devstade\"><p>Stades de développement</p><table><tr><th>Emergent de l'année</th><th>Juvénile en croissance</th></tr><tr><td><img src=\"{{basepath}}/img_cmr_cistude_aide_stade_emergent.png\" alt=\"\" width=\"300\" height=\"150\"></img></td><td><img src=\"{{basepath}}/img_cmr_cistude_aide_stade_juvenile.png\" alt=\"\" width=\"300\" height=\"150\"></img></td></tr><tr><th>Adulte avec stries encore visible</th><th>Vieil adulte sans stries de croissance</th></tr><tr><td><img src=\"{{basepath}}/img_cmr_cistude_aide_stade_adulte.png\" alt=\"\" width=\"300\" height=\"150\"></img></td><td><img src=\"{{basepath}}/img_cmr_cistude_aide_stade_vieiladulte.png\" alt=\"\" width=\"300\" height=\"150\"></img></td></tr></table></div></div>"
+        },
+        "age": {
+            "type_widget": "number",
+            "attribut_label": "Âge estimé",
+            "min": 0,
+            "max": 20,
+            "required": false
+        },
+        "aide_age":{
+            "type_widget":"html",
+            "html": "<div class=\"mb-3 alert alert-info\"><a data-toggle=\"collapse\" href=\"#help_age\" role=\"button\" aria-expanded=\"false\" aria-controls=\"help_age\"><i class=\"fa fa-question-circle\"></i>&nbsp;Aide</a><div class=\"collapse\" id=\"help_age\"><p>Lecture des stries sur la 4ème écaille abdominale</p><img src=\"{{basepath}}/img_cmr_cistude_aide_estimation_age.png\" alt=\"\" width=\"370\" height=\"235\"></img></div></div>"
+        },
+        "particular_signs": {
+            "type_widget": "textarea",
+            "attribut_label": "Signes particuliers",
+            "required": false
+        },
+        "site_name": {
+            "attribut_label": "Point de Capture"
+        },
+        "aide_media": {
+            "type_widget": "html",
+            "html": "<div class=\"alert alert-warning mt-3\"><i class=\"fa fa-warning mr-2\"></i>Veuillez ajouter au moins:<br>- 1 photo du plastron<br>- 1 photo de la dossière</div>"
+        },
+        "medias": {
+          "type_widget": "medias",
+          "attribut_label": "Médias",
+          "schema_dot_table": "gn_cmr.t_observation"
+        }
+    },
+    "groups": [{
+        "label": "Mesures biométriques",
+        "defaults": {
+            "opened": true
+        },
+        "fields": {
+            "aide_mesures":{
+                "type_widget":"html",
+                "html": "<div class=\"mb-3 alert alert-info\"><a data-toggle=\"collapse\" href=\"#help_mesure\" role=\"button\" aria-expanded=\"false\" aria-controls=\"help_mesure\"><i class=\"fa fa-question-circle\"></i>&nbsp;Aide</a><div class=\"collapse\" id=\"help_mesure\"><img src=\"{{basepath}}/img_cmr_cistude_aide_mesures.png\" alt=\"\" width=\"750\" height=\"240\"></img></div></div>"
+            },
+            "poids_g": {
+                "attribut_label": "Poids (g)",
+                "type_widget": "number",
+                "min": 1,
+                "required": true
+            },
+            "longueur_dossiere_mm": {
+                "attribut_label": "Longueur dossière (mm)",
+                "definition": "LOD",
+                "type_widget": "number",
+                "min": 1,
+                "required": true
+            },
+            "largeur_dossiere_mm": {
+                "attribut_label": "Largeur dossière (mm)",
+                "definition": "LAD",
+                "type_widget": "number",
+                "min": 1,
+                "required": true
+            },
+            "longueur_plastron_mm": {
+                "attribut_label": "Longueur plastron (mm)",
+                "definition": "LOP",
+                "type_widget": "number",
+                "min": 1,
+                "required": true
+            },
+            "largeur_avant_plastron_mm": {
+                "attribut_label": "Largeur avant du plastron (mm)",
+                "definition": "LAAVP",
+                "type_widget": "number",
+                "min": 1,
+                "required": true
+            },
+            "largeur_arriere_plastron_mm": {
+                "attribut_label": "Largeur arrière du plastron (mm)",
+                "definition": "LAARP",
+                "type_widget": "number",
+                "min": 1,
+                "required": true
+            },
+            "mesures_complementaire": {
+                "attribut_label": "Mesures complémentaires",
+                "type_widget": "textarea",
+                "required": false
+            }
+        }
+    },{
+        "label": "Elements relatifs à la capture",
+        "defaults": {
+            "opened": false
+        },
+        "fields": {
+            "date_capture": {
+                "attribut_label": "Date de capture",
+                "type_widget": "date",
+                "required": true
+            },
+            "date_relache": {
+                "attribut_label": "Date de relâché",
+                "type_widget": "date",
+                "required": false
+            },
+            "conditions_manipulation": {
+                "attribut_label": "Description conditions de manipulation",
+                "type_widget": "textarea",
+                "required": false
+            }
+        }
+    },{
+        "label": "Typage génétique",
+        "defaults": {
+            "opened": false
+        },
+        "yesno_field": "typage_gen_ouinon",
+        "yesno_yesvalue": "Oui",
+        "fields": {
+            "typage_gen_ouinon": {
+                "type_widget": "radio",
+                "attribut_label": "",
+                "values": ["Non", "Oui"],
+                "required": true
+            },
+            "typage_gen_date_prelevement": {
+                "attribut_label": "Date de prélèvement",
+                "type_widget": "date",
+                "required": true
+            },
+            "typage_gen_type_prelevement": {
+                "attribut_label": "Type de Prélèvement",
+                "type_widget": "select",
+                "values" : ["Echantillon de sang", "Echantillon buccal"],
+                "required": true
+            },
+            "typage_gen_analyse_par": {
+                "attribut_label": "Analyse effectuée par",
+                "type_widget": "text",
+                "required": true
+            },
+            "typage_gen_type_analyse": {
+                "attribut_label": "Type d'Analyse",
+                "type_widget": "select",
+                "values": ["ADN mitochondrial","ADN nucléaire","ADN mitochondrial + ADN nucléaire"],
+                "required": true
+            },
+            "typage_gen_resultat": {
+                "attribut_label": "Résultat",
+                "type_widget": "textarea",
+                "required": false
+            }
+        }
+    },{
+        "label": "Analyses complémentaires",
+        "defaults" : {
+            "opened": false
+        },
+        "yesno_field": "analyse_comp_ouinon",
+        "yesno_yesvalue": "Oui",
+        "fields": {
+            "analyse_comp_ouinon": {
+                "type_widget": "radio",
+                "attribut_label": "",
+                "values": ["Non", "Oui"],
+                "required": true
+            },
+            "analyse_comp_date_prelevement": {
+                "attribut_label": "Date de prélèvement",
+                "type_widget": "date",
+                "required": true
+            },
+            "analyse_comp_type_prelevement": {
+                "attribut_label": "Type de Prélèvement",
+                "type_widget": "multiselect",
+                "values": [{
+                    "value":"Prélèvement sanguin"
+                },{
+                    "value":"Frottis carapace"
+                },{
+                    "value":"Echantillon de griffe"
+                },{
+                    "value":"Fèces"
+                },{
+                    "value":"Autre"
+                }],
+                "required": true
+            },
+            "analyse_comp_type_prelevement_autre": {
+                "attribut_label": "Type Autre prélèvement",
+                "type_widget":"text",
+                "required": true
+            },
+            "analyse_comp_objectif": {
+                "attribut_label": "Objectif du prélèvement",
+                "type_widget": "text",
+                "required": false
+            },
+            "analyse_comp_analyse_par": {
+                "attribut_label": "Analyse effectuée par",
+                "type_widget": "text",
+                "required": false
+            },
+            "analyse_comp_type_analyse": {
+                "attribut_label": "Type d'analyse",
+                "type_widget": "text",
+                "required": false
+            },
+            "analyse_comp_resultats": {
+                "attribut_label": "Résultats de l'analyse",
+                "type_widget": "textarea",
+                "required": true
+            }
+        }
+    }]
+}

@@ -1,0 +1,13 @@
+{
+    "module_label": "CMR Cistude",
+    "module_desc": "Module de CMR appliqué à la Cistude d'Europe par la Société Herpétologique de France",
+    "disclaimer" : true,
+    "disclaimer_text": [
+        "La Cistude d'Europe est une espèce protégée,",
+        "sa manipulation requiert une autorisation spécifique (CERFA n°131616*01).",
+        "",
+        "Avez-vous connaissance de la réglementation?"
+    ],
+    "welcome": "Bienvenue dans le module de saisie de la CMR Cistude",
+    "use_sitegroup": true
+}
