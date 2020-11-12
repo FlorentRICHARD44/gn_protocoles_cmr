@@ -66,5 +66,6 @@
             "attribut_label": "Date de Retrait",
             "required": false
         }
-    }
+    },
+    "date_validators": ["date_pose<date_retrait"]
 }
