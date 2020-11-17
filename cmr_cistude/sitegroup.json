@@ -1,6 +1,6 @@
 {
-    "label": "Aire d'étude",
-    "label_plural": "Aires d'étude",
+    "label": "Site d'étude",
+    "label_plural": "Sites d'étude",
     "geometry_types": ["Polygon"],
     "compute_data_from_municipality_area": {
         "communes": "nom_com",
@@ -8,7 +8,7 @@
     },
     "search_filters": [{
         "field": "name",
-        "placeholder": "Nom de l'aire d'étude"
+        "placeholder": "Nom du site d'étude"
     },{
         "field": "communes",
         "placeholder": "Nom de la commune"
