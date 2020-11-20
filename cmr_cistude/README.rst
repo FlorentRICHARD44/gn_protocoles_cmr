@@ -43,3 +43,11 @@ observation
 
 - Utilisation de plusieurs groupes de champs, dont certains avec des champs Oui/Non (pour les analyses).
 
+
+Initialisation SQL
+==================
+
+Le fichier d'Initialisation SQL contient:
+
+- ajout d'une nomenclature "Session" (pour les visites), avec 2 valeurs de test pré-définies
+- ajout de la vue pour lister les observations. Elle est nommée pour un module "cmr_cistude"; pensez donc à renommer cette vue si vous souhaitez donner un autre code au module.

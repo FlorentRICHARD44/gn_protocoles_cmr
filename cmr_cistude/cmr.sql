@@ -1,6 +1,15 @@
 -- Add Nomemclature type for Visit Session
---INSERT INTO ref_nomenclatures.bib_nomenclatures_types (mnemonique, label_default, definition_default, label_fr, source, statut, meta_create_date) VALUES
---('CMR_CISTUDE_SESSION','Session','Session pour les CMR Cistude', 'Session','CMR','Validé', now());
+INSERT INTO ref_nomenclatures.bib_nomenclatures_types (mnemonique, label_default, definition_default, label_fr, source, statut, meta_create_date) VALUES
+('CMR_CISTUDE_SESSION','Session','Session pour les CMR Cistude', 'Session','CMR','Validé', now());
+-- Add 2 items for tests.
+DO
+$$
+DECLARE
+	session_item RECORD;
+BEGIN
+	SELECT * INTO session_item FROM ref_nomenclatures.bib_nomenclatures_types WHERE mnemonique = 'CMR_CISTUDE_SESSION' ;
+	INSERT INTO ref_nomenclatures.t_nomenclatures (id_type, cd_nomenclature, mnemonique, label_default, label_fr, statut, active) VALUES (session_item.id_type, 'CMR_CISTUDE_SESSION_TEST_1', 'CMR_TEST_1', '(TEST) CMR Session 1', '(TEST) CMR Session 1', 'Validé', TRUE), (session_item.id_type, 'CMR_CISTUDE_SESSION_TEST_2', 'CMR_TEST_2', '(TEST) CMR Session 2', '(TEST) CMR Session 2', 'Validé', TRUE);
+END$$;
 
 
 -- View: gn_cmr.v_cmr_sitegroup_observations_test_cmr
