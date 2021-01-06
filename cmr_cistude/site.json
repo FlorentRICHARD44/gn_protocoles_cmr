@@ -36,7 +36,7 @@
         "width": 100,
         "align": "right"
     }],
-    "properties_to_keep_when_chaining": ["lieu","habitat","conductivité","piege_type","date_pose"],
+    "properties_to_keep_when_chaining": ["lieu","habitat","conductivité","piege_type","date_pose","date_retrait"],
     "batch_visit_display_list": ["name","piege_type"],
     "specific": {
         "habitat": {
