@@ -26,7 +26,7 @@
             {% for observer in first_observ.visit.observers %}
                 {{ observers.append(observer.nom_complet) or ''}}
             {% endfor %}
-            <div><strong>Première capture: </strong>{{first_observ.visit.date.split(' ')[0].split('-') | reverse | join('/')}}</script> par {{ observers | join(', ') }}</div>
+            <div><strong>Première capture: </strong>{{first_observ.visit.date.split(' ')[0].split('-') | reverse | join('/')}} par {{ observers | join(', ') }}</div>
             <div><strong>Commentaires: </strong><br>{{(data.individual.comments or '') | replace('\n','<br>') | safe }}</div>
         </div>
         <div class="map">
@@ -39,7 +39,7 @@
     <tr>
         <th>Date</th>
         <th>Aire d'étude</th>
-        <th>Point de capture</th>
+        <th>Piège</th>
         <th>Stade de développment</th>
         <th>Âge</th>
         <th>Etat</th>

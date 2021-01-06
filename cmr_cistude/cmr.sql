@@ -29,7 +29,7 @@ CREATE OR REPLACE VIEW gn_cmr.v_cmr_sitegroup_observations_cmr_cistude
  SELECT v.date::date AS "visit_date",
     sg.name AS "aire_d_etude",
 	sg.id_sitegroup as "id_sitegroup",
-    s.name AS "point_de_capture",
+    s.name AS "piege",
 	s.id_site as "id_site",
 	s.geom as "geom",
     s.data #>> '{piege_type}'::text[] AS "type_de_piege",

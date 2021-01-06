@@ -49,7 +49,7 @@
             "attribut_label": "Département"
         },
         "nb_sites": {
-            "attribut_label": "Nb Points"
+            "attribut_label": "Nb Pièges"
         }
     },
     "date_validators": []

@@ -23,7 +23,7 @@ sitegroup
 site
 ''''
 
-- Nommé en "Point de Capture"
+- Nommé en "Piège"
 - Représente des pièges ou bien des captures manuelles
 - seulement en Point
 
