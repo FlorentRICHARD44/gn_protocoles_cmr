@@ -40,9 +40,18 @@
     "batch_visit_display_list": ["name","piege_type"],
     "specific": {
         "habitat": {
-            "type_widget": "text",
             "attribut_label": "Habitat",
-            "required": false
+            "required": false,
+			"type_widget": "datalist",
+			"api": "habref/habitats/autocomplete",
+			"application": "GeoNature",
+			"keyValue": "search_name",
+			"keyLabel": "search_name",
+			"type_util": "habitat",
+			"params": {
+				"cd_typo": 7,
+				"search_name": ""
+			}
         },
         "conductivité": {
             "type_widget": "text",
