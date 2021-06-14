@@ -39,6 +39,18 @@
     "properties_to_keep_when_chaining": [],
     "mapping_visit_individual_additional_field": "session",
     "specific": {
+        "id_dataset": {
+            "type_widget": "dataset",
+            "attribut_label": "Jeu de données",
+            "module_code": "cmr_cistude",
+            "type_util": "dataset",
+            "required": true
+        },
+        "dataset": {
+            "attribut_label": "Jeu de données",
+            "module_code": "cmr_cistude",
+            "type_util": "dataset"
+        },
         "session": {
             "type_widget": "nomenclature",
             "attribut_label": "Session",
