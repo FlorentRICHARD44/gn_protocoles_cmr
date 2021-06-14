@@ -90,6 +90,6 @@ CREATE OR REPLACE VIEW gn_cmr.v_cmr_sitegroup_observations_cmr_cistude
      LEFT JOIN gn_cmr.t_individual i ON i.id_individual = o.id_individual
   ORDER BY v.date, i.identifier;
 
-ALTER TABLE gn_cmr.v_cmr_sitegroup_observations_test_cmr
+ALTER TABLE gn_cmr.v_cmr_sitegroup_observations_cmr_cistude
     OWNER TO geonatadmin;
 
