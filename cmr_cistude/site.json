@@ -50,7 +50,8 @@
 			"type_util": "habitat",
 			"params": {
 				"cd_typo": 7,
-				"search_name": ""
+				"search_name": "",
+                "limit": "999999"
 			}
         },
         "conductivité": {

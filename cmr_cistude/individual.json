@@ -41,6 +41,23 @@
             "attribut_label": "Sexe",
             "values": ["Mâle","Femelle","Indéterminé"],
             "required": true
+        },
+        "identifier": {
+            "type_widget": "text",
+            "attribut_label": "Numéro affecté à l'animal",
+            "required": true
+        },
+        "marker": {
+            "type_widget": "select",
+            "attribut_label": "Type de marquage",
+            "values": ["Encoche à la lime ronde","Encoche à la lime triangulaire","Encoche à la scie à métaux", "Transpondeur", "Marquage temporaire (vernis, peinture, collage, etc.)"],
+            "required": true
+        },
+        "medias": {
+          "type_widget": "medias",
+          "attribut_label": "Médias",
+          "schema_dot_table": "gn_cmr.t_individual",
+          "hidden": true
         }
     },
     "date_validators": []

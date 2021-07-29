@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <title>Fiche individu {{data.individual.identifier}}</title>
-    <link rel="stylesheet" type="text/css" href="../../templates/cmr/{{data.module_code}}/fiche_individu_template_pdf.css">
+    <link rel="stylesheet" type="text/css" href="api/static/cmr/{{data.module_code}}/fiche_individu_template_pdf.css">
 </head>
 
 <body>
 <div class="header">
     <table><tr>
-       <td><img class="bandeau" src="../../templates/cmr/{{data.module_code}}/images/LOGO_SHF_micro.png" alt="Bandeau"></td>
+       <td><img class="bandeau" src="api/static/cmr/{{data.module_code}}/images/LOGO_SHF_micro.png" alt="Bandeau"></td>
         <td><p class="italic">Outil de saisie CMR Cistude - Fiche Individu</p></td>
     </tr></table>
 </div>
@@ -19,7 +19,7 @@
             <h1>Fiche Individu: {{data.individual.identifier}}</h1>
             <div><strong>RFID: </strong>{{data.individual.rfid or ''}}</div>
             <div><strong>Sexe: </strong>{{data.individual.sexe}}</div>
-            <div><strong>Marquage: </strong>{{data.individual.marker}}</div>
+            <div><strong>Type de marquage: </strong>{{data.individual.marker}}</div>
             <div><strong>Nombre de captures: </strong>{{data.individual.nb_observations}}</div>
             {% set first_observ = data.observations | sort(attribute='visit.date') | first %}
             {% set observers = [] %}
@@ -41,7 +41,7 @@
         <th>Aire d'étude</th>
         <th>Piège</th>
         <th>Stade de développment</th>
-        <th>Âge</th>
+        <th>Nombre de stries de croissance</th>
         <th>Etat</th>
         <th>Poids</th>
         <th>LOD</th>

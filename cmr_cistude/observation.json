@@ -72,22 +72,21 @@
             "type_widget": "select",
             "attribut_label": "Stade de développement",
             "required": true,
-            "values": ["Emergent de l'année","Juvénile en croissance","Adulte avec stries encore visibles","Vieil adulte sans strie de croissance","Inconnu"]
+            "values": ["Emergent de l'année","Juvénile en croissance (ligne de suture claire, sexe indéterminé)","Sub-adulte (ligne de suture claire, sexe déterminé)","Adulte (ligne de suture sombre, sexe déterminé)"]
         },
         "aide_developpement_stade":{
             "type_widget":"html",
-            "html": "<div class=\"mb-3 alert alert-info\"><a data-toggle=\"collapse\" href=\"#help_devstade\" role=\"button\" aria-expanded=\"false\" aria-controls=\"help_devstade\"><i class=\"fa fa-question-circle\"></i>&nbsp;Aide</a><div class=\"collapse\" id=\"help_devstade\"><p>Stades de développement</p><table><tr><th>Emergent de l'année</th><th>Juvénile en croissance</th></tr><tr><td><img src=\"{{basepath}}/img_cmr_cistude_aide_stade_emergent.png\" alt=\"\" width=\"300\" height=\"150\"></img></td><td><img src=\"{{basepath}}/img_cmr_cistude_aide_stade_juvenile.png\" alt=\"\" width=\"300\" height=\"150\"></img></td></tr><tr><th>Adulte avec stries encore visible</th><th>Vieil adulte sans stries de croissance</th></tr><tr><td><img src=\"{{basepath}}/img_cmr_cistude_aide_stade_adulte.png\" alt=\"\" width=\"300\" height=\"150\"></img></td><td><img src=\"{{basepath}}/img_cmr_cistude_aide_stade_vieiladulte.png\" alt=\"\" width=\"300\" height=\"150\"></img></td></tr></table></div></div>"
+            "html": "<div class=\"mb-3 alert alert-info\"><a data-toggle=\"collapse\" href=\"#help_devstade\" role=\"button\" aria-expanded=\"false\" aria-controls=\"help_devstade\"><i class=\"fa fa-question-circle\"></i>&nbsp;Aide</a><div class=\"collapse\" id=\"help_devstade\"><p>Stades de développement</p><table><tr><th>Juvénile en croissance</th></tr><tr><td><img src=\"{{basepath}}/Juvenile.JPG\" alt=\"\" width=\"300\" max-height=\"150\"></img></td></tr><tr><th>Sub-adulte</th><th>Adulte</th></tr><tr><td><img src=\"{{basepath}}/Sub-adulte.JPG\" alt=\"\" width=\"300\" max-height=\"150\"></img></td><td><img src=\"{{basepath}}/Adulte.JPG\" alt=\"\" width=\"300\" max-height=\"150\"></img></td></tr></table></div></div>"
         },
         "age": {
-            "type_widget": "number",
-            "attribut_label": "Âge estimé",
-            "min": 0,
-            "max": 20,
+            "type_widget": "select",
+            "attribut_label": "Nombre de stries de croissance",
+            "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "Stries non dénombrables"],
             "required": false
         },
         "aide_age":{
             "type_widget":"html",
-            "html": "<div class=\"mb-3 alert alert-info\"><a data-toggle=\"collapse\" href=\"#help_age\" role=\"button\" aria-expanded=\"false\" aria-controls=\"help_age\"><i class=\"fa fa-question-circle\"></i>&nbsp;Aide</a><div class=\"collapse\" id=\"help_age\"><p>Lecture des stries sur la 4ème écaille abdominale</p><img src=\"{{basepath}}/img_cmr_cistude_aide_estimation_age.png\" alt=\"\" width=\"370\" height=\"235\"></img></div></div>"
+            "html": "<div class=\"mb-3 alert alert-info\"><a data-toggle=\"collapse\" href=\"#help_age\" role=\"button\" aria-expanded=\"false\" aria-controls=\"help_age\"><i class=\"fa fa-question-circle\"></i>&nbsp;Aide</a><div class=\"collapse\" id=\"help_age\"><table><tr><th colspan=\"2\">Dès lors que l’ensemble des stries de croissances ne sont pas visibles veuillez indiquer « Stries non dénombrables »</th></tr><tr><th colspan=\"2\">Lecture des stries sur la 4ème écaille abdominale</th></tr><tr><td colspan=\"2\"><img src=\"{{basepath}}/img_cmr_cistude_aide_estimation_age.png\" alt=\"\" width=\"300\" max-height=\"150\"></img></td></tr><tr><th>Aide détermination de l'âge</th><th>Stries non dénombrables</th></tr><tr><td><img src=\"{{basepath}}/Photo aide Determination age.png\" alt=\"\" width=\"300\" max-height=\"150\"></img></td><td><img src=\"{{basepath}}/Photo Stries non denombrables.JPG\" alt=\"\" width=\"300\" max-height=\"150\"></img></td></tr></table></div></div>"
         },
         "particular_signs": {
             "type_widget": "textarea",
