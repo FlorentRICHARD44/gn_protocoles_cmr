@@ -36,6 +36,18 @@
     }],
     "properties_to_keep_when_chaining": [],
     "specific": {
+        "cd_nom": {
+          "type_widget": "datalist",
+          "attribut_label": "Espèce observée",
+          "keyValue": "cd_nom",
+          "keyLabel": "lb_nom",
+          "multiple": false,
+          "api": "taxref/allnamebylist/100?limit=1000",
+          "application": "TaxHub",
+          "required": false,
+          "hidden": true,
+          "type_util": "taxonomy"
+        },
         "sexe": {
             "type_widget": "select",
             "attribut_label": "Sexe",

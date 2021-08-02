@@ -86,7 +86,9 @@ export function initObservation(form, formGroups, visit, individual, lastObserva
  * @param FormGroup form  Le formulaire de l'individu
  */
 export function initIndividual(form) {
-    return {};
+    return {
+      cd_nom: 11165
+    };
 }
 
 /**
