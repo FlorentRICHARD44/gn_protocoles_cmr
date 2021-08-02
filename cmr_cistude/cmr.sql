@@ -91,42 +91,28 @@ CREATE OR REPLACE VIEW gn_cmr.v_cmr_sitegroup_observations_cmr_cistude
 ALTER TABLE gn_cmr.v_cmr_sitegroup_observations_cmr_cistude
     OWNER TO geonatadmin;
 
-
 CREATE OR REPLACE VIEW gn_cmr.v_synthese_cmr_cistude
- AS
-WITH source AS (
-  SELECT t_sources.id_source
-    FROM gn_synthese.t_sources
-  WHERE t_sources.name_source::text = concat('CMR_', upper('cmr_cistude'::text))
-  LIMIT 1
-),/*last_observation_by_individual AS (
-  select id_individual, id_observation, id_visit from (
-    SELECT i.id_individual, o.id_observation, v.id_visit, v.date,
-    row_number() over (partition by i.id_individual order by v.date desc) as row_num
-    FROM gn_cmr.t_visit v
-    INNER JOIN gn_cmr.t_observation o
-      ON o.id_visit = v.id_visit
-    INNER JOIN gn_cmr.t_individual i
-      ON o.id_individual = i.id_individual
-    ORDER BY i.id_individual desc
-  ) as t
-	WHERE row_num = 1
- ),*/ observers AS (
-  SELECT array_agg(r.id_role) AS ids_observers,
-    string_agg(concat(r.nom_role, ' ', r.prenom_role), ' ; '::text) AS observers,
-    cvo.id_visit
-  FROM gn_cmr.cor_visit_observer cvo
-    JOIN utilisateurs.t_roles r ON r.id_role = cvo.id_observer
-  GROUP BY cvo.id_visit
-)
+AS WITH source AS (
+         SELECT t_sources.id_source
+           FROM gn_synthese.t_sources
+          WHERE t_sources.name_source::text = concat('CMR_', upper('cmr_cistude'::text))
+         LIMIT 1
+        ), observers AS (
+         SELECT array_agg(r.id_role) AS ids_observers,
+            string_agg(concat(r.nom_role, ' ', r.prenom_role), ' ; '::text) AS observers,
+            cvo.id_visit
+           FROM gn_cmr.cor_visit_observer cvo
+             JOIN utilisateurs.t_roles r ON r.id_role = cvo.id_observer
+          GROUP BY cvo.id_visit
+        )
  SELECT o.uuid_observation AS unique_id_sinp,
- 	s.uuid_site AS unique_id_sinp_grp,
- 	source.id_source,
-    o.id_observation AS entity_source_pk_value,
-	v.id_dataset,
+    s.uuid_site AS unique_id_sinp_grp,
+    source.id_source,
+    concat('sitegroup/', s.id_sitegroup, '/site/', s.id_site, '/visit/', v.id_visit, '/observation/', o.id_observation) AS entity_source_pk_value,
+    v.id_dataset,
     ref_nomenclatures.get_id_nomenclature('NAT_OBJ_GEO'::character varying, 'St'::character varying) AS id_nomenclature_geo_object_nature,
-    null as id_nomenclature_grp_typ,
-	null as id_nomenclature_tech_collect_campanule,
+    NULL::text AS id_nomenclature_grp_typ,
+    NULL::text AS id_nomenclature_tech_collect_campanule,
     ref_nomenclatures.get_id_nomenclature('IND'::character varying, 'OBJ_DENBR'::character varying) AS id_nomenclature_obj_count,
     ref_nomenclatures.get_id_nomenclature('TYP_DENBR'::character varying, 'Es'::character varying) AS id_nomenclature_type_count,
     ref_nomenclatures.get_id_nomenclature('STATUT_OBS'::character varying, 'Pr'::character varying) AS id_nomenclature_observation_status,
@@ -139,11 +125,11 @@ WITH source AS (
     t.nom_complet AS nom_cite,
     alt.altitude_min,
     alt.altitude_max,
-    s.geom as the_geom_4326,
-    s.geom as the_geom_point,
-	ST_Transform(s.geom, gn_commons.get_default_parameter('local_srid',NULL)::integer ) AS the_geom_local,
-    v.date as date_min,
-    v.date as date_max,
+    s.geom AS the_geom_4326,
+    s.geom AS the_geom_point,
+    st_transform(s.geom, gn_commons.get_default_parameter('local_srid'::text, NULL::integer)::integer) AS the_geom_local,
+    v.date AS date_min,
+    v.date AS date_max,
     obs.observers,
     o.id_digitiser,
     s.id_module,
@@ -153,12 +139,11 @@ WITH source AS (
     v.id_site,
     v.id_visit
    FROM gn_cmr.t_individual i
-   INNER JOIN gn_cmr.t_observation o ON o.id_individual = i.id_individual
-   INNER JOIN gn_cmr.t_visit v ON o.id_visit = v.id_visit
-   INNER JOIN gn_cmr.t_site s ON s.id_site = v.id_site
-   --INNER JOIN gn_cmr.t_observation o ON o.id_observation = l.id_observation
-   JOIN taxonomie.taxref t ON t.cd_nom = 77396
-   JOIN source ON true
-   JOIN observers obs ON obs.id_visit = v.id_visit
-   LEFT JOIN LATERAL ref_geo.fct_get_altitude_intersection(s.geom) alt(altitude_min, altitude_max) ON true
+     JOIN gn_cmr.t_observation o ON o.id_individual = i.id_individual
+     JOIN gn_cmr.t_visit v ON o.id_visit = v.id_visit
+     JOIN gn_cmr.t_site s ON s.id_site = v.id_site
+     JOIN taxonomie.taxref t ON t.cd_nom = i.cd_nom
+     JOIN source ON true
+     JOIN observers obs ON obs.id_visit = v.id_visit
+     LEFT JOIN LATERAL ref_geo.fct_get_altitude_intersection(s.geom) alt(altitude_min, altitude_max) ON true;
    
