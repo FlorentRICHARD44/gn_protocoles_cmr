@@ -87,7 +87,7 @@ export function initObservation(form, formGroups, visit, individual, lastObserva
  */
 export function initIndividual(form) {
     return {
-      cd_nom: 11165
+      cd_nom: 77396
     };
 }
 
